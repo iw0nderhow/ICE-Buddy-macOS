@@ -21,28 +21,16 @@ class AboutViewController: NSViewController {
     
     @IBAction func showImprint(_ sender: Any) {
         let url = URL(string:"https://riedel.wtf/imprint/")!
-        NSWorkspace.shared.open([url],
-                                withAppBundleIdentifier:"com.apple.Safari",
-                                options: [],
-                                additionalEventParamDescriptor: nil,
-                                launchIdentifiers: nil)
+        NSWorkspace.shared.open(url)
     }
     
     @IBAction func showPP(_ sender: Any) {
         let url = URL(string:"https://riedel.wtf/privacy/")!
-        NSWorkspace.shared.open([url],
-                                withAppBundleIdentifier:"com.apple.Safari",
-                                options: [],
-                                additionalEventParamDescriptor: nil,
-                                launchIdentifiers: nil)
+        NSWorkspace.shared.open(url)
     }
     
     @IBAction func openDonatusWebsite(_ sender: Any) {
         let url = URL(string:"https://donatuswolf.de")!
-        NSWorkspace.shared.open([url],
-                                withAppBundleIdentifier:"com.apple.Safari",
-                                options: [],
-                                additionalEventParamDescriptor: nil,
-                                launchIdentifiers: nil)
+        NSWorkspace.shared.open(url)
     }
 }

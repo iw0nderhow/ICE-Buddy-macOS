@@ -305,20 +305,12 @@ class MenuBarController: NSObject {
     
     @objc func openWifiLogin() {
         let url = URL(string:"http://LogIn.WIFIonICE.de")!
-        NSWorkspace.shared.open([url],
-                                withAppBundleIdentifier:"com.apple.Safari",
-                                options: [],
-                                additionalEventParamDescriptor: nil,
-                                launchIdentifiers: nil)
+        NSWorkspace.shared.open(url)
     }
     
     @objc func hmuTwitter() {
         let url = URL(string:"https://twitter.com/frederikRiedel")!
-        NSWorkspace.shared.open([url],
-                                withAppBundleIdentifier:"com.apple.Safari",
-                                options: [],
-                                additionalEventParamDescriptor: nil,
-                                launchIdentifiers: nil)
+        NSWorkspace.shared.open(url)
     }
     
     let iceHeaderVC = ICEHeader()
@@ -395,11 +387,11 @@ class MenuBarController: NSObject {
     
     
     let disconnectedMenuItem = NSMenuItem(title: "Please connect to WiFionICE / Wifi@DB", action: nil, keyEquivalent: "")
-    let openLoginMenuItem = NSMenuItem(title: "Open LogIn.WIFIonICE.de in Safari", action: nil, keyEquivalent: "")
+    let openLoginMenuItem = NSMenuItem(title: "Open LogIn.WIFIonICE.de", action: nil, keyEquivalent: "")
     
     let disconnectedLaunchAtLoginMenuItem = NSMenuItem(title: "Launch at Login", action: nil, keyEquivalent: "")
     let disconnectedTwitterMenuItem = NSMenuItem(title: "Questions? → Hit me up on Twitter!", action: nil, keyEquivalent: "")
-    let disconnectedqQitMenuItem = NSMenuItem(title: "Quit ICE Buddy", action: nil, keyEquivalent: "")
+    let disconnectedQuitMenuItem = NSMenuItem(title: "Quit ICE Buddy", action: nil, keyEquivalent: "")
     let disconnectedAboutMenuItem = NSMenuItem(title: "About", action: nil, keyEquivalent: "")
     
     var isConnected = true
@@ -415,8 +407,8 @@ class MenuBarController: NSObject {
         disconnectedAboutMenuItem.action = #selector(showAbout)
         disconnectedAboutMenuItem.target = self
         
-        disconnectedqQitMenuItem.action = #selector(quitApp)
-        disconnectedqQitMenuItem.target = self
+        disconnectedQuitMenuItem.action = #selector(quitApp)
+        disconnectedQuitMenuItem.target = self
         
         disconnectedMenu.removeAllItems()
         disconnectedMenu.delegate = self
@@ -425,7 +417,7 @@ class MenuBarController: NSObject {
         self.disconnectedMenu.addItem(disconnectedAboutMenuItem)
         self.disconnectedMenu.addItem(disconnectedLaunchAtLoginMenuItem)
         self.disconnectedMenu.addItem(disconnectedTwitterMenuItem)
-        self.disconnectedMenu.addItem(disconnectedqQitMenuItem)
+        self.disconnectedMenu.addItem(disconnectedQuitMenuItem)
         self.disconnectedMenu.update()
         self.iceStatusItem?.menu = disconnectedMenu
     }
